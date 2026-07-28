@@ -1,14 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { Image } from 'astro:assets';
+import LogoMark from '../components/LogoMark.astro';
 import logo1 from '../assets/images/logo1.jpg';
 import food1 from '../assets/images/food1.jpg';
 import food2 from '../assets/images/food2.jpg';
 import milkshake1 from '../assets/images/milkshake1.jpg';
 import pizza1 from '../assets/images/pizza1.jpg';
 import mediaPhoto from '../assets/images/media-photo.jpg';
-import menu1 from '../assets/images/menu1.png';
-import menu2 from '../assets/images/menu2.png';
 
 const marqueeText =
   'FRESH DAILY · HOMEMADE COUSCOUS · MADE TO ORDER · 7:30AM START · 16 PICTON TERRACE · FOLLOW @JAGGERZ.NARBERTH';
@@ -75,8 +74,8 @@ const currentYear = new Date().getFullYear();
   <!-- NAV -->
   <nav id="site-nav" class="fixed top-[37px] left-0 right-0 z-[110] transition-colors duration-300">
     <div class="nav-inner mx-auto flex h-[68px] max-w-[1400px] items-center justify-between px-5 md:px-10">
-      <a href="#hero" data-hover class="flex shrink-0 items-center gap-3">
-        <Image src={logo1} alt="Jaggerz Takeaway" width={120} height={48} class="h-11 w-auto object-contain" />
+      <a href="#hero" data-hover class="flex shrink-0 items-center">
+        <LogoMark />
       </a>
 
       <div id="nav-desktop" class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex">
@@ -121,7 +120,6 @@ const currentYear = new Date().getFullYear();
 
   <!-- HERO -->
   <section id="hero" class="relative min-h-svh overflow-hidden bg-ink pt-[105px]">
-    <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
     <div class="relative z-10 mx-auto grid min-h-[calc(100svh-105px)] max-w-[1400px] items-center gap-10 px-5 pb-16 md:grid-cols-2 md:px-10">
       <div class="flex flex-col justify-center">
@@ -315,11 +313,6 @@ const currentYear = new Date().getFullYear();
         <div class="rounded-sm bg-rust p-6 text-center text-cream md:p-8">
           <p class="font-display text-2xl font-bold">Any Hot Drink & a Pastry — £5.00</p>
         </div>
-
-        <details class="rounded-sm border border-ink/10 p-4 text-sm text-ink/50">
-          <summary class="cursor-pointer font-medium text-ink/70">View menu board image (reference only)</summary>
-          <Image src={menu1} alt="Breakfast menu board" width={800} loading="lazy" class="mt-4 w-full rounded-sm" />
-        </details>
       </div>
 
       <!-- LUNCH -->
@@ -402,11 +395,6 @@ const currentYear = new Date().getFullYear();
             </ul>
           </article>
         </div>
-
-        <details class="rounded-sm border border-ink/10 p-4 text-sm text-ink/50">
-          <summary class="cursor-pointer font-medium text-ink/70">View menu board image (reference only)</summary>
-          <Image src={menu2} alt="Lunch menu board" width={800} loading="lazy" class="mt-4 w-full rounded-sm" />
-        </details>
       </div>
     </div>
   </section>
@@ -767,7 +755,6 @@ const currentYear = new Date().getFullYear();
 <script type="module">
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
-  import * as THREE from 'three';
 
   gsap.registerPlugin(ScrollTrigger);
 
@@ -862,48 +849,6 @@ const currentYear = new Date().getFullYear();
       },
     });
   });
-
-  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
-  if (canvas) {
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
-    camera.position.z = 4;
-
-    const geometry = new THREE.IcosahedronGeometry(1.2, 1);
-    const material = new THREE.MeshBasicMaterial({
-      color: 0xc5622b,
-      wireframe: true,
-      transparent: true,
-      opacity: 0.18,
-    });
-    const mesh = new THREE.Mesh(geometry, material);
-    mesh.position.set(1.5, 0.2, 0);
-    scene.add(mesh);
-
-    const resize = () => {
-      const parent = canvas.parentElement;
-      if (!parent) return;
-      const w = parent.clientWidth;
-      const h = parent.clientHeight;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    };
-
-    resize();
-    window.addEventListener('resize', resize);
-
-    const animate = () => {
-      mesh.rotation.x += 0.002;
-      mesh.rotation.y += 0.003;
-      renderer.render(scene, camera);
-      requestAnimationFrame(animate);
-    };
-    animate();
-  }
 </script>
 
 <style>

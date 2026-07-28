@@ -171,7 +171,3 @@ body.hovered #cursor-ring {
   opacity: 0;
   transform: translateY(20px);
 }
-
-#hero-canvas {
-  @apply pointer-events-none absolute inset-0 z-0 opacity-30;
-}
