@@ -171,3 +171,32 @@ body.hovered #cursor-ring {
   opacity: 0;
   transform: translateY(20px);
 }
+
+.faq-item {
+  @apply rounded-sm border border-ink/8 bg-stone/40;
+}
+
+.faq-item summary {
+  @apply flex cursor-pointer list-none items-center justify-between gap-4 px-6 py-5 text-sm font-medium text-ink transition hover:text-rust;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::after {
+  content: '+';
+  @apply shrink-0 font-mono text-lg text-rust transition-transform duration-200;
+}
+
+.faq-item[open] summary::after {
+  content: '−';
+}
+
+.faq-item[open] summary {
+  @apply border-b border-ink/8;
+}
+
+.faq-item p {
+  @apply px-6 py-5 text-sm leading-relaxed text-ink/70;
+}

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { businessSchema, faqSchema } from '../data/schema';
 
 interface Props {
   title?: string;
@@ -15,46 +16,6 @@ const {
 
 const siteUrl = 'https://jaggerztakeaway.co.uk';
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
-
-const schemaLd = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Jaggerz Takeaway',
-  description:
-    'Takeaway in Narberth serving jacket potatoes, salad boxes, pizza slices, breakfast rolls and hot drinks with outdoor seating.',
-  telephone: '+447904709325',
-  address: {
-    '@type': 'PostalAddress',
-    streetAddress: '16 Picton Terrace',
-    addressLocality: 'Narberth',
-    addressRegion: 'Pembrokeshire',
-    postalCode: 'SA67 7AW',
-    addressCountry: 'GB',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 51.799,
-    longitude: -4.744,
-  },
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-      opens: '08:30',
-      closes: '15:00',
-    },
-  ],
-  priceRange: '£',
-  sameAs: [
-    'https://www.instagram.com/jaggerz.narberth/',
-    'https://www.facebook.com/people/Jaggerz/61580776627816/',
-  ],
-  aggregateRating: {
-    '@type': 'AggregateRating',
-    ratingValue: '5.0',
-    reviewCount: '9',
-  },
-};
 ---
 
 <!doctype html>
@@ -92,7 +53,8 @@ const schemaLd = {
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    <script type="application/ld+json" set:html={JSON.stringify(schemaLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(businessSchema)} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
   </head>
   <body>
     <div id="cursor-dot"></div>
