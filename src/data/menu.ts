@@ -45,7 +45,7 @@ export const menuSections: MenuSection[] = [
   },
   {
     name: 'Lunch',
-    description: 'Served 11:30am–3:00pm',
+    description: 'Served 11:30am–2:30pm Mon–Fri · 11:30am–4:00pm Sat',
     items: [
       {
         name: 'Baguettes or Wraps — Cold Fillings',

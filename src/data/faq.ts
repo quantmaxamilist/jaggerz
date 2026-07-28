@@ -7,7 +7,7 @@ export const faqItems: FaqItem[] = [
   {
     question: 'What time does Jaggerz open?',
     answer:
-      'Jaggerz is open Monday to Saturday, 8:30am to 3:00pm. We are closed on Sundays.',
+      'Jaggerz is open Monday to Friday, 8:30am to 2:30pm, and Saturday 9:00am to 4:00pm. We are closed on Sundays.',
   },
   {
     question: 'Does Jaggerz have outdoor seating?',
