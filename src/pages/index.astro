@@ -140,7 +140,7 @@ const currentYear = new Date().getFullYear();
           Fresh. Fast. Made Right Here.
         </h1>
         <p id="hero-sub" class="mt-6 max-w-lg text-base leading-relaxed text-cream/65">
-          Grab-and-go couscous bowls, jacket potatoes, pizza slices and breakfast rolls — built to order from 7:30am at 16 Picton Terrace, Narberth.
+          Jacket potatoes, salad boxes, pizza slices and breakfast rolls — built to order from 7:30am at 16 Picton Terrace, Narberth. Grab it to go, or take a seat outside.
         </p>
         <div id="hero-cta" class="mt-8">
           <a
@@ -184,6 +184,13 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 
+  <!-- SUPPLIER CREDIT -->
+  <div class="bg-stone px-5 py-4 text-center">
+    <p class="text-xs font-medium uppercase tracking-[0.14em] text-ink/55">
+      Meat locally sourced from Andrew Rees & Sons · Coffee roasted by Cardigan Bay Roasters
+    </p>
+  </div>
+
   <!-- SIGNATURE FEATURE -->
   <section id="signature" class="section-reveal bg-stone px-5 py-24 md:px-10 md:py-32">
     <div class="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
@@ -204,7 +211,7 @@ const currentYear = new Date().getFullYear();
           The Sweet Potato Box
         </h2>
         <p class="mt-4 max-w-md text-sm leading-relaxed text-ink/65">
-          Built fresh to order — fluffy sweet potato loaded with homemade couscous, pesto chicken, crisp salad and coleslaw. Grab it and go.
+          Built fresh to order — fluffy sweet potato loaded with homemade couscous, pesto chicken, crisp salad and coleslaw. Everything in one box, ready when you are.
         </p>
 
         <ul class="mt-8 flex flex-wrap gap-2 lg:hidden">
@@ -253,14 +260,17 @@ const currentYear = new Date().getFullYear();
     <div class="mx-auto max-w-[1100px]">
       <p class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-rust">Order Fresh</p>
       <h2 class="font-display text-[clamp(2.25rem,5vw,4rem)] font-bold text-ink">Menu</h2>
-      <p class="mt-3 max-w-xl text-sm text-ink/60">Made to order — not a sit-down café. Build your box, grab your baguette, or pick up a slice on the go.</p>
+      <p class="mt-3 max-w-xl text-sm text-ink/60">Made fresh to order — build your box, grab your baguette, or pick a spot outside and stay a while.</p>
 
-      <div class="mt-10 flex gap-8 border-b border-ink/10">
+      <div class="mt-10 flex flex-wrap gap-6 border-b border-ink/10 sm:gap-8">
         <button type="button" data-menu-tab="breakfast" class="menu-tab active border-b-2 border-transparent pb-3 text-sm font-semibold uppercase tracking-wider text-ink/50 transition">
           Breakfast
         </button>
         <button type="button" data-menu-tab="lunch" class="menu-tab border-b-2 border-transparent pb-3 text-sm font-semibold uppercase tracking-wider text-ink/50 transition">
           Lunch
+        </button>
+        <button type="button" data-menu-tab="drinks" class="menu-tab border-b-2 border-transparent pb-3 text-sm font-semibold uppercase tracking-wider text-ink/50 transition">
+          Drinks
         </button>
       </div>
 
@@ -302,12 +312,11 @@ const currentYear = new Date().getFullYear();
           </article>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-3">
+        <div class="grid gap-6 md:grid-cols-2">
           <article class="rounded-sm border border-ink/8 p-6">
             <h3 class="font-display text-lg font-bold text-ink">Pastries</h3>
             <ul class="mt-3 space-y-2 text-sm">
               <li class="flex justify-between"><span>Croissant</span><span class="font-mono text-rust">£2.00</span></li>
-              <li class="flex justify-between"><span>Pain aux Raisin</span><span class="font-mono text-rust">£2.50</span></li>
               <li class="flex justify-between"><span>Pain au Chocolat</span><span class="font-mono text-rust">£2.50</span></li>
             </ul>
           </article>
@@ -316,14 +325,6 @@ const currentYear = new Date().getFullYear();
             <h3 class="font-display text-lg font-bold text-ink">Granola & Yoghurt</h3>
             <p class="mt-3 text-sm">Granola & Greek Yoghurt Bowl with Fresh Fruit</p>
             <p class="mt-2 font-mono text-rust">£6.50</p>
-          </article>
-
-          <article class="rounded-sm border border-ink/8 p-6">
-            <h3 class="font-display text-lg font-bold text-ink">Hot Drinks</h3>
-            <p class="font-mono text-xs text-rust">£3.50 each</p>
-            <p class="mt-2 text-xs leading-relaxed text-ink/65">Latte, Cappuccino, Flat White, Mochaccino, Espresso, Americano, Hot Chocolate</p>
-            <p class="mt-2 text-sm">Tea — <span class="font-mono text-rust">£3.00</span></p>
-            <p class="mt-1 text-xs text-ink/55">Add a syrup — 50p each</p>
           </article>
         </div>
 
@@ -421,6 +422,41 @@ const currentYear = new Date().getFullYear();
           </article>
         </div>
       </div>
+
+      <!-- DRINKS -->
+      <div id="menu-drinks" class="menu-panel mt-10 space-y-10">
+        <p class="font-mono text-xs uppercase tracking-widest text-rust">Available all day</p>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
+            <h3 class="font-display text-xl font-bold text-ink">Hot Drinks</h3>
+            <p class="font-mono mt-3 text-xs text-rust">£3.50 each</p>
+            <p class="mt-2 text-xs leading-relaxed text-ink/65">Latte, Cappuccino, Flat White, Mochaccino, Espresso, Americano, Hot Chocolate</p>
+            <p class="mt-3 text-sm">Tea — <span class="font-mono text-rust">£3.00</span></p>
+            <p class="mt-1 text-xs text-ink/55">Add a syrup — 50p each</p>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Iced Coffees</h3>
+            <p class="font-mono mt-3 text-xs text-rust">£4.00 each</p>
+            <p class="mt-2 text-xs text-ink/55">Add a syrup — 50p</p>
+          </article>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Milkshakes</h3>
+            <p class="font-mono mt-3 text-xs text-rust">£5.00 each</p>
+            <p class="mt-2 text-xs text-ink/55">Fresh fruit where relevant</p>
+            <p class="mt-2 text-sm leading-relaxed text-ink/65">Strawberry, Banana, Vanilla, Chocolate, Oreo</p>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Matcha</h3>
+            <p class="mt-3 font-mono text-rust">£4.00</p>
+          </article>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -458,7 +494,7 @@ const currentYear = new Date().getFullYear();
   </div>
 
   <!-- STATS -->
-  <div class="grid grid-cols-2 border-y border-ink/8 bg-stone md:grid-cols-4">
+  <div id="stats" class="grid grid-cols-2 border-y border-ink/8 bg-stone md:grid-cols-4">
     {
       stats.map((s) => (
         <div
@@ -519,7 +555,7 @@ const currentYear = new Date().getFullYear();
   <section id="find-us" class="section-reveal bg-ink px-5 py-24 md:px-10 md:py-32">
     <div class="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-2">
       <div>
-        <p class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-rust">Grab & go</p>
+        <p class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-rust">Visit us</p>
         <h2 class="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold text-cream">Find Us</h2>
 
         <div class="mt-8 space-y-4 text-cream/75">
@@ -636,7 +672,7 @@ const currentYear = new Date().getFullYear();
 <script>
   const promoMessages = [
     'Any Hot Drink & a Pastry — £5',
-    'Fresh couscous bowls & jacket potatoes',
+    'Jacket potatoes, salad boxes & pizza slices',
     'Order ahead — call 07904 709325',
   ];
   let promoIndex = 0;
@@ -690,7 +726,7 @@ const currentYear = new Date().getFullYear();
     });
   });
 
-  function setMenuTab(tab: 'breakfast' | 'lunch') {
+  function setMenuTab(tab: 'breakfast' | 'lunch' | 'drinks') {
     document.querySelectorAll('.menu-tab').forEach((btn) => {
       const isActive = btn.getAttribute('data-menu-tab') === tab;
       btn.classList.toggle('active', isActive);
@@ -705,7 +741,7 @@ const currentYear = new Date().getFullYear();
 
   document.querySelectorAll('[data-menu-tab]').forEach((btn) => {
     btn.addEventListener('click', () => {
-      const tab = btn.getAttribute('data-menu-tab') as 'breakfast' | 'lunch';
+      const tab = btn.getAttribute('data-menu-tab') as 'breakfast' | 'lunch' | 'drinks';
       setMenuTab(tab);
     });
   });
@@ -750,42 +786,6 @@ const currentYear = new Date().getFullYear();
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') lightbox?.classList.remove('open');
   });
-
-  const statObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const item = entry.target as HTMLElement;
-        if (item.dataset.counted === 'true') return;
-        item.dataset.counted = 'true';
-
-        const target = parseFloat(item.getAttribute('data-target') || '0');
-        const decimals = parseInt(item.getAttribute('data-decimals') || '0', 10);
-        const display = item.getAttribute('data-display');
-        const numEl = item.querySelector('.count-num');
-        if (!numEl) return;
-
-        if (display) {
-          numEl.textContent = display;
-          return;
-        }
-
-        let current = 0;
-        const step = target / 60;
-        const timer = setInterval(() => {
-          current += step;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          numEl.textContent = decimals > 0 ? current.toFixed(decimals) : String(Math.round(current));
-        }, 30);
-      });
-    },
-    { threshold: 0.4 }
-  );
-
-  document.querySelectorAll('.stat-counter').forEach((el) => statObserver.observe(el));
 </script>
 
 <script type="module">
@@ -882,6 +882,38 @@ const currentYear = new Date().getFullYear();
         trigger: '#signature',
         start: 'top 70%',
         toggleActions: 'play none none none',
+      },
+    });
+  });
+
+  gsap.utils.toArray<HTMLElement>('.stat-counter').forEach((item) => {
+    const numEl = item.querySelector('.count-num');
+    if (!numEl) return;
+
+    const display = item.getAttribute('data-display');
+    const target = parseFloat(item.getAttribute('data-target') || '0');
+    const decimals = parseInt(item.getAttribute('data-decimals') || '0', 10);
+
+    ScrollTrigger.create({
+      trigger: item,
+      start: 'top 90%',
+      once: true,
+      onEnter: () => {
+        if (display) {
+          numEl.textContent = display;
+          return;
+        }
+
+        const counter = { val: 0 };
+        gsap.to(counter, {
+          val: target,
+          duration: 1.4,
+          ease: 'power2.out',
+          onUpdate: () => {
+            numEl.textContent =
+              decimals > 0 ? counter.val.toFixed(decimals) : String(Math.round(counter.val));
+          },
+        });
       },
     });
   });
