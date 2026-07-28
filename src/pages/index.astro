@@ -13,7 +13,7 @@ import outside1 from '../assets/images/outside1.jpg';
 import outside2 from '../assets/images/outside2.jpg';
 
 const marqueeText =
-  'FRESH DAILY · HOMEMADE COUSCOUS · MADE TO ORDER · 7:30AM START · 16 PICTON TERRACE · FOLLOW @JAGGERZ.NARBERTH';
+  'FRESH DAILY · HOMEMADE COUSCOUS · MADE TO ORDER · 8:30AM START · 16 PICTON TERRACE · FOLLOW @JAGGERZ.NARBERTH';
 
 const signatureCallouts = [
   { label: 'Homemade Couscous', x: '8%', y: '18%' },
@@ -56,7 +56,7 @@ const reviews = [
 const stats = [
   { target: 5.0, label: 'Google Rating', suffix: '★', decimals: 1 },
   { target: 9, label: 'Reviews', suffix: '', decimals: 0 },
-  { target: 730, label: 'Daily Start', suffix: '', display: '7:30AM', decimals: 0 },
+  { target: 830, label: 'Daily Start', suffix: '', display: '8:30AM', decimals: 0 },
   { target: 6, label: 'Days a Week', suffix: '', decimals: 0 },
 ];
 
@@ -73,7 +73,7 @@ const currentYear = new Date().getFullYear();
     <span class="mx-3 text-cream/30">|</span>
     <a href="tel:07904709325" data-hover class="text-rust hover:text-cream transition-colors">07904 709325</a>
     <span class="mx-3 text-cream/30">|</span>
-    <span id="hours-today" class="text-cream/80">Open today 7:30am–2:30pm</span>
+    <span id="hours-today" class="text-cream/80">Open today 8:30am–3:00pm</span>
   </div>
 
   <!-- NAV -->
@@ -140,7 +140,7 @@ const currentYear = new Date().getFullYear();
           Fresh. Fast. Made Right Here.
         </h1>
         <p id="hero-sub" class="mt-6 max-w-lg text-base leading-relaxed text-cream/65">
-          Jacket potatoes, salad boxes, pizza slices and breakfast rolls — built to order from 7:30am at 16 Picton Terrace, Narberth. Grab it to go, or take a seat outside.
+          Jacket potatoes, salad boxes, pizza slices and breakfast rolls — built to order from 8:30am at 16 Picton Terrace, Narberth. Grab it to go, or take a seat outside.
         </p>
         <div id="hero-cta" class="mt-8">
           <a
@@ -276,7 +276,7 @@ const currentYear = new Date().getFullYear();
 
       <!-- BREAKFAST -->
       <div id="menu-breakfast" class="menu-panel active mt-10 space-y-10">
-        <p class="font-mono text-xs uppercase tracking-widest text-rust">Served 7:30am–11:30am</p>
+        <p class="font-mono text-xs uppercase tracking-widest text-rust">Served 8:30am–11:30am</p>
 
         <div class="grid gap-6 md:grid-cols-3">
           <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
@@ -335,7 +335,7 @@ const currentYear = new Date().getFullYear();
 
       <!-- LUNCH -->
       <div id="menu-lunch" class="menu-panel mt-10 space-y-10">
-        <p class="font-mono text-xs uppercase tracking-widest text-rust">Served 11:30am–2:30pm</p>
+        <p class="font-mono text-xs uppercase tracking-widest text-rust">Served 11:30am–3:00pm</p>
 
         <div class="grid gap-6 md:grid-cols-2">
           <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
@@ -581,8 +581,7 @@ const currentYear = new Date().getFullYear();
         <table class="mt-10 w-full max-w-sm text-left text-sm">
           <caption class="mb-3 text-left font-mono text-[10px] uppercase tracking-[0.16em] text-rust">Opening Hours</caption>
           <tbody class="font-mono text-cream/80">
-            <tr class="border-b border-cream/10"><td class="py-3 pr-4">Mon–Fri</td><td class="py-3 text-rust">7:30am–2:30pm</td></tr>
-            <tr class="border-b border-cream/10"><td class="py-3 pr-4">Sat</td><td class="py-3 text-rust">8:00am–4:00pm</td></tr>
+            <tr class="border-b border-cream/10"><td class="py-3 pr-4">Mon–Sat</td><td class="py-3 text-rust">8:30am–3:00pm</td></tr>
             <tr><td class="py-3 pr-4">Sun</td><td class="py-3 text-cream/40">Closed</td></tr>
           </tbody>
         </table>
@@ -681,12 +680,12 @@ const currentYear = new Date().getFullYear();
 
   const hoursMap: Record<number, string> = {
     0: 'Closed today',
-    1: 'Open today 7:30am–2:30pm',
-    2: 'Open today 7:30am–2:30pm',
-    3: 'Open today 7:30am–2:30pm',
-    4: 'Open today 7:30am–2:30pm',
-    5: 'Open today 7:30am–2:30pm',
-    6: 'Open today 8:00am–4:00pm',
+    1: 'Open today 8:30am–3:00pm',
+    2: 'Open today 8:30am–3:00pm',
+    3: 'Open today 8:30am–3:00pm',
+    4: 'Open today 8:30am–3:00pm',
+    5: 'Open today 8:30am–3:00pm',
+    6: 'Open today 8:30am–3:00pm',
   };
 
   if (hoursTodayEl) {
