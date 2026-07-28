@@ -8,6 +8,9 @@ import food2 from '../assets/images/food2.jpg';
 import milkshake1 from '../assets/images/milkshake1.jpg';
 import pizza1 from '../assets/images/pizza1.jpg';
 import mediaPhoto from '../assets/images/media-photo.jpg';
+import front1 from '../assets/images/front1.jpg';
+import outside1 from '../assets/images/outside1.jpg';
+import outside2 from '../assets/images/outside2.jpg';
 
 const marqueeText =
   'FRESH DAILY · HOMEMADE COUSCOUS · MADE TO ORDER · 7:30AM START · 16 PICTON TERRACE · FOLLOW @JAGGERZ.NARBERTH';
@@ -26,6 +29,8 @@ const galleryItems = [
   { src: milkshake1, alt: 'Branded Jaggerz milkshake' },
   { src: pizza1, alt: 'Pizza slices — margherita, fresh veg, BBQ chicken, pepperoni' },
   { src: mediaPhoto, alt: 'Sweet Potato Box breakdown' },
+  { src: front1, alt: 'Jaggerz Takeaway storefront on Picton Terrace' },
+  { src: outside1, alt: 'Homemade Oreo cheesecake at the outdoor seating area' },
 ];
 
 const reviews = [
@@ -263,14 +268,26 @@ const currentYear = new Date().getFullYear();
       <div id="menu-breakfast" class="menu-panel active mt-10 space-y-10">
         <p class="font-mono text-xs uppercase tracking-widest text-rust">Served 7:30am–11:30am</p>
 
-        <div class="grid gap-6 md:grid-cols-2">
+        <div class="grid gap-6 md:grid-cols-3">
           <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
-            <h3 class="font-display text-xl font-bold text-ink">Bap / Wrap / Baguette</h3>
+            <h3 class="font-display text-xl font-bold text-ink">Bap / Wrap</h3>
+            <p class="mt-2 text-xs text-ink/55">Bacon, Sausage/Veggie Sausage, Egg</p>
             <ul class="mt-4 space-y-2 text-sm">
-              <li class="flex justify-between gap-4"><span>Sausage, Veggie Sausage, Bacon or Egg</span><span class="font-mono text-rust shrink-0">£5.00</span></li>
-              <li class="flex justify-between gap-4"><span>Sausage & Bacon</span><span class="font-mono text-rust shrink-0">£5.50</span></li>
-              <li class="flex justify-between gap-4"><span>Sausage, Bacon & Egg</span><span class="font-mono text-rust shrink-0">£6.00</span></li>
-              <li class="text-ink/55 text-xs pt-1">Add hash brown or extra item — 50p each</li>
+              <li class="flex justify-between gap-4"><span>1 item</span><span class="font-mono text-rust shrink-0">£5.00</span></li>
+              <li class="flex justify-between gap-4"><span>2 item</span><span class="font-mono text-rust shrink-0">£5.50</span></li>
+              <li class="flex justify-between gap-4"><span>3 item</span><span class="font-mono text-rust shrink-0">£6.00</span></li>
+              <li class="text-ink/55 text-xs pt-1">Add hash brown or additional items — 50p each</li>
+            </ul>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
+            <h3 class="font-display text-xl font-bold text-ink">Baguette</h3>
+            <p class="mt-2 text-xs text-ink/55">Bacon, Sausage/Veggie Sausage, Egg</p>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li class="flex justify-between gap-4"><span>1 item</span><span class="font-mono text-rust shrink-0">£5.50</span></li>
+              <li class="flex justify-between gap-4"><span>2 item</span><span class="font-mono text-rust shrink-0">£6.00</span></li>
+              <li class="flex justify-between gap-4"><span>3 item</span><span class="font-mono text-rust shrink-0">£6.50</span></li>
+              <li class="text-ink/55 text-xs pt-1">Add hash brown or additional items — 50p each</li>
             </ul>
           </article>
 
@@ -298,15 +315,15 @@ const currentYear = new Date().getFullYear();
           <article class="rounded-sm border border-ink/8 p-6">
             <h3 class="font-display text-lg font-bold text-ink">Granola & Yoghurt</h3>
             <p class="mt-3 text-sm">Granola & Greek Yoghurt Bowl with Fresh Fruit</p>
-            <p class="mt-2 font-mono text-rust">£6.00</p>
+            <p class="mt-2 font-mono text-rust">£6.50</p>
           </article>
 
           <article class="rounded-sm border border-ink/8 p-6">
             <h3 class="font-display text-lg font-bold text-ink">Hot Drinks</h3>
             <p class="font-mono text-xs text-rust">£3.50 each</p>
-            <p class="mt-2 text-xs leading-relaxed text-ink/65">Latte, Cappuccino, Latte Macchiato, Mochaccino, Espresso, Americano, Hot Chocolate</p>
+            <p class="mt-2 text-xs leading-relaxed text-ink/65">Latte, Cappuccino, Flat White, Mochaccino, Espresso, Americano, Hot Chocolate</p>
             <p class="mt-2 text-sm">Tea — <span class="font-mono text-rust">£3.00</span></p>
-            <p class="mt-1 text-xs text-ink/55">Add a syrup — 50p</p>
+            <p class="mt-1 text-xs text-ink/55">Add a syrup — 50p each</p>
           </article>
         </div>
 
@@ -323,7 +340,7 @@ const currentYear = new Date().getFullYear();
           <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
             <h3 class="font-display text-xl font-bold text-ink">Baguettes or Wraps</h3>
             <p class="mt-3 text-sm font-semibold">Cold Fillings <span class="font-mono text-rust">£5.85</span></p>
-            <p class="mt-1 text-xs text-ink/60">Egg Mayo, Tuna Mayo, Cheese & Red Onion, Ham & Cheese, Coronation Chicken, Chicken Tikka</p>
+            <p class="mt-1 text-xs text-ink/60">Tuna Mayo, Cheese & Red Onion, Ham & Cheese, Coronation Chicken, Chicken Tikka</p>
             <p class="mt-4 text-sm font-semibold">Hot Fillings <span class="font-mono text-rust">£6.85</span></p>
             <p class="mt-1 text-xs text-ink/60">BBQ Chicken, Cajun Chicken, Chinese Chicken, Pesto Chicken, BBQ Pulled Pork, Beef Chilli</p>
           </article>
@@ -362,7 +379,7 @@ const currentYear = new Date().getFullYear();
           </article>
         </div>
 
-        <div class="grid gap-6 md:grid-cols-3">
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
           <article class="rounded-sm border border-ink/8 p-6">
             <h3 class="font-display text-lg font-bold text-ink">Sweet Jacket Potato Box</h3>
             <p class="text-xs text-ink/55">All served with couscous, coleslaw & salad</p>
@@ -392,6 +409,14 @@ const currentYear = new Date().getFullYear();
               <li class="flex justify-between"><span>1 Meat</span><span class="font-mono text-rust">£7.00</span></li>
               <li class="flex justify-between"><span>2 Meat</span><span class="font-mono text-rust">£9.00</span></li>
               <li class="flex justify-between"><span>3 Meat</span><span class="font-mono text-rust">£11.00</span></li>
+            </ul>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Sweet Treats</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex justify-between gap-4"><span>Homemade Oreo Cheesecake</span><span class="font-mono text-rust shrink-0">£4.50</span></li>
+              <li class="flex justify-between gap-4"><span>Homemade Strawberry Cheesecake</span><span class="font-mono text-rust shrink-0">£4.50</span></li>
             </ul>
           </article>
         </div>
@@ -539,7 +564,18 @@ const currentYear = new Date().getFullYear();
         </div>
       </div>
 
-      <div class="flex flex-col justify-center">
+      <div class="flex flex-col gap-8">
+        <figure class="overflow-hidden rounded-sm border border-cream/10">
+          <Image
+            src={outside2}
+            alt="Homemade strawberry cheesecake at Jaggerz outdoor seating area"
+            width={900}
+            height={1200}
+            loading="lazy"
+            class="h-full min-h-[320px] w-full object-cover object-center lg:min-h-[480px]"
+          />
+        </figure>
+
         <div class="flex flex-col gap-4 sm:flex-row">
           <a
             href="tel:07904709325"
