@@ -1,0 +1,933 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import logo1 from '../assets/images/logo1.jpg';
+import food1 from '../assets/images/food1.jpg';
+import food2 from '../assets/images/food2.jpg';
+import milkshake1 from '../assets/images/milkshake1.jpg';
+import pizza1 from '../assets/images/pizza1.jpg';
+import mediaPhoto from '../assets/images/media-photo.jpg';
+import menu1 from '../assets/images/menu1.png';
+import menu2 from '../assets/images/menu2.png';
+
+const marqueeText =
+  'FRESH DAILY · HOMEMADE COUSCOUS · MADE TO ORDER · 7:30AM START · 16 PICTON TERRACE · FOLLOW @JAGGERZ.NARBERTH';
+
+const signatureCallouts = [
+  { label: 'Homemade Couscous', x: '8%', y: '18%' },
+  { label: 'Fresh Salad', x: '72%', y: '8%' },
+  { label: 'Pesto Chicken', x: '78%', y: '42%' },
+  { label: 'Fluffy Sweet Potato', x: '62%', y: '78%' },
+  { label: 'Coleslaw', x: '6%', y: '62%' },
+];
+
+const galleryItems = [
+  { src: food1, alt: 'Sweet potato box with couscous, pesto chicken and salad' },
+  { src: food2, alt: 'Granola and Greek yoghurt bowl with fresh fruit' },
+  { src: milkshake1, alt: 'Branded Jaggerz milkshake' },
+  { src: pizza1, alt: 'Pizza slices — margherita, fresh veg, BBQ chicken, pepperoni' },
+  { src: mediaPhoto, alt: 'Sweet Potato Box breakdown' },
+];
+
+const reviews = [
+  {
+    name: 'Kieran Jennings',
+    text: "Best breakfast wrap I've ever had, 10/10 experience, will be back for the sweet jacket potato!",
+  },
+  {
+    name: 'George Rizzardini',
+    text: 'Called in on our way past by chance. Crisp, clean & good staff attitude, they work as a team. Excellent salad bowl at good value. We really did enjoy our meal on the beach.',
+    meta: 'Food 5/5, Service 5/5, Atmosphere 4/5',
+  },
+  {
+    name: 'Rheinallt George',
+    text: 'Food was great and service was great. Also the coffee was really good.',
+  },
+  {
+    name: 'Leanne R (Local Guide)',
+    text: 'Great lunch, will come again. Nice to have some slightly unusual options eg baked sweet potato.',
+  },
+];
+
+const stats = [
+  { target: 5.0, label: 'Google Rating', suffix: '★', decimals: 1 },
+  { target: 9, label: 'Reviews', suffix: '', decimals: 0 },
+  { target: 730, label: 'Daily Start', suffix: '', display: '7:30AM', decimals: 0 },
+  { target: 6, label: 'Days a Week', suffix: '', decimals: 0 },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<Layout ogImage="/og-food1.jpg">
+
+  <!-- PROMO BAR -->
+  <div id="promo-bar" class="fixed top-0 left-0 right-0 z-[120] bg-ink text-cream text-center py-2.5 px-4 text-xs font-mono tracking-wider">
+    <span id="promo-message" class="text-cream">
+      Any Hot Drink & a Pastry — <span class="text-rust font-semibold">£5</span>
+    </span>
+    <span class="mx-3 text-cream/30">|</span>
+    <a href="tel:07904709325" data-hover class="text-rust hover:text-cream transition-colors">07904 709325</a>
+    <span class="mx-3 text-cream/30">|</span>
+    <span id="hours-today" class="text-cream/80">Open today 7:30am–2:30pm</span>
+  </div>
+
+  <!-- NAV -->
+  <nav id="site-nav" class="fixed top-[37px] left-0 right-0 z-[110] transition-colors duration-300">
+    <div class="nav-inner mx-auto flex h-[68px] max-w-[1400px] items-center justify-between px-5 md:px-10">
+      <a href="#hero" data-hover class="flex shrink-0 items-center gap-3">
+        <Image src={logo1} alt="Jaggerz Takeaway" width={120} height={48} class="h-11 w-auto object-contain" />
+      </a>
+
+      <div id="nav-desktop" class="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex">
+        <a href="#menu" data-hover class="nav-link text-xs font-medium uppercase tracking-widest text-cream/70 transition hover:text-cream">Menu</a>
+        <a href="#menu" data-tab="breakfast" data-hover class="nav-link menu-nav-tab text-xs font-medium uppercase tracking-widest text-cream/70 transition hover:text-cream">Breakfast</a>
+        <a href="#gallery" data-hover class="nav-link text-xs font-medium uppercase tracking-widest text-cream/70 transition hover:text-cream">Gallery</a>
+        <a href="#reviews" data-hover class="nav-link text-xs font-medium uppercase tracking-widest text-cream/70 transition hover:text-cream">Reviews</a>
+        <a href="#find-us" data-hover class="nav-link text-xs font-medium uppercase tracking-widest text-cream/70 transition hover:text-cream">Find Us</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <a
+          href="tel:07904709325"
+          data-magnetic
+          data-hover
+          class="hidden rounded-sm bg-rust px-5 py-2.5 text-xs font-semibold uppercase tracking-wider text-cream transition hover:bg-rust/90 sm:inline-block"
+        >
+          Call Now
+        </a>
+        <button
+          id="hamburger"
+          type="button"
+          aria-label="Open menu"
+          class="flex h-11 w-11 flex-col items-center justify-center gap-1.5 rounded-sm border border-cream/20 md:hidden"
+        >
+          <span class="block h-0.5 w-5 bg-cream"></span>
+          <span class="block h-0.5 w-5 bg-cream"></span>
+          <span class="block h-0.5 w-5 bg-cream"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden flex-col border-t border-cream/10 bg-ink md:hidden">
+      <a href="#menu" class="mobile-link border-b border-cream/10 px-6 py-4 text-sm uppercase tracking-widest text-cream/80">Menu</a>
+      <a href="#menu" data-tab="breakfast" class="mobile-link menu-nav-tab border-b border-cream/10 px-6 py-4 text-sm uppercase tracking-widest text-cream/80">Breakfast</a>
+      <a href="#gallery" class="mobile-link border-b border-cream/10 px-6 py-4 text-sm uppercase tracking-widest text-cream/80">Gallery</a>
+      <a href="#reviews" class="mobile-link border-b border-cream/10 px-6 py-4 text-sm uppercase tracking-widest text-cream/80">Reviews</a>
+      <a href="#find-us" class="mobile-link border-b border-cream/10 px-6 py-4 text-sm uppercase tracking-widest text-cream/80">Find Us</a>
+      <a href="tel:07904709325" class="px-6 py-4 text-sm font-semibold uppercase tracking-widest text-rust">Call Now — 07904 709325</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="relative min-h-svh overflow-hidden bg-ink pt-[105px]">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+    <div class="relative z-10 mx-auto grid min-h-[calc(100svh-105px)] max-w-[1400px] items-center gap-10 px-5 pb-16 md:grid-cols-2 md:px-10">
+      <div class="flex flex-col justify-center">
+        <Image
+          id="hero-logo"
+          src={logo1}
+          alt=""
+          width={180}
+          height={72}
+          class="mb-8 h-16 w-auto object-contain opacity-90"
+        />
+        <h1 id="hero-headline" class="font-display text-[clamp(2.75rem,7vw,5rem)] font-black leading-[0.95] tracking-tight text-cream">
+          Fresh. Fast. Made Right Here.
+        </h1>
+        <p id="hero-sub" class="mt-6 max-w-lg text-base leading-relaxed text-cream/65">
+          Grab-and-go couscous bowls, jacket potatoes, pizza slices and breakfast rolls — built to order from 7:30am at 16 Picton Terrace, Narberth.
+        </p>
+        <div id="hero-cta" class="mt-8">
+          <a
+            href="#menu"
+            data-magnetic
+            data-hover
+            class="inline-block rounded-sm bg-rust px-8 py-4 text-sm font-semibold uppercase tracking-wider text-cream transition hover:bg-rust/90"
+          >
+            View Menu
+          </a>
+        </div>
+      </div>
+
+      <div id="hero-image-wrap" class="relative flex justify-end">
+        <Image
+          id="hero-image"
+          src={food1}
+          alt="Sweet potato box with homemade couscous, pesto chicken and fresh salad"
+          width={700}
+          height={700}
+          loading="eager"
+          class="hero-float relative z-10 w-full max-w-[560px] rounded-sm object-cover shadow-2xl"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="overflow-hidden border-y border-rust/15 bg-cream py-3.5">
+    <div class="marquee-track">
+      {
+        [...Array(4)].flatMap(() =>
+          marqueeText.split(' · ').map((item) => (
+            <span class="inline-flex items-center gap-12 px-6 font-mono text-[11px] uppercase tracking-[0.18em] text-rust whitespace-nowrap">
+              {item}
+              <span class="text-rust/30">·</span>
+            </span>
+          ))
+        )
+      }
+    </div>
+  </div>
+
+  <!-- SIGNATURE FEATURE -->
+  <section id="signature" class="section-reveal bg-stone px-5 py-24 md:px-10 md:py-32">
+    <div class="mx-auto grid max-w-[1400px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
+      <div class="relative">
+        <Image
+          src={food1}
+          alt="Sweet Potato Box"
+          width={800}
+          height={800}
+          loading="lazy"
+          class="w-full rounded-sm object-cover shadow-lg"
+        />
+      </div>
+
+      <div class="relative lg:min-h-[420px]">
+        <p class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-rust">Signature Box</p>
+        <h2 class="font-display text-[clamp(2rem,4vw,3.25rem)] font-bold leading-tight text-ink">
+          The Sweet Potato Box
+        </h2>
+        <p class="mt-4 max-w-md text-sm leading-relaxed text-ink/65">
+          Built fresh to order — fluffy sweet potato loaded with homemade couscous, pesto chicken, crisp salad and coleslaw. Grab it and go.
+        </p>
+
+        <ul class="mt-8 flex flex-wrap gap-2 lg:hidden">
+          {
+            signatureCallouts.map((c) => (
+              <li class="signature-callout rounded-sm border border-rust/20 bg-cream px-3 py-2 text-xs font-medium text-rust">{c.label}</li>
+            ))
+          }
+        </ul>
+
+        <div class="relative mt-8 hidden min-h-[320px] lg:block">
+          <svg class="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            {
+              signatureCallouts.map((c) => (
+                <line
+                  x1="50"
+                  y1="50"
+                  x2={c.x.replace('%', '')}
+                  y2={c.y.replace('%', '')}
+                  stroke="#c5622b"
+                  stroke-opacity="0.35"
+                  stroke-width="0.3"
+                  stroke-dasharray="1 1"
+                />
+              ))
+            }
+          </svg>
+
+          {
+            signatureCallouts.map((c) => (
+              <div
+                class="signature-callout absolute rounded-sm border border-rust/20 bg-cream/90 px-3 py-2 text-xs font-medium text-rust shadow-sm backdrop-blur-sm"
+                style={`left:${c.x};top:${c.y};transform:translate(-50%,-50%)`}
+              >
+                {c.label}
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU -->
+  <section id="menu" class="section-reveal bg-cream px-5 py-24 md:px-10 md:py-32">
+    <div class="mx-auto max-w-[1100px]">
+      <p class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-rust">Order Fresh</p>
+      <h2 class="font-display text-[clamp(2.25rem,5vw,4rem)] font-bold text-ink">Menu</h2>
+      <p class="mt-3 max-w-xl text-sm text-ink/60">Made to order — not a sit-down café. Build your box, grab your baguette, or pick up a slice on the go.</p>
+
+      <div class="mt-10 flex gap-8 border-b border-ink/10">
+        <button type="button" data-menu-tab="breakfast" class="menu-tab active border-b-2 border-transparent pb-3 text-sm font-semibold uppercase tracking-wider text-ink/50 transition">
+          Breakfast
+        </button>
+        <button type="button" data-menu-tab="lunch" class="menu-tab border-b-2 border-transparent pb-3 text-sm font-semibold uppercase tracking-wider text-ink/50 transition">
+          Lunch
+        </button>
+      </div>
+
+      <!-- BREAKFAST -->
+      <div id="menu-breakfast" class="menu-panel active mt-10 space-y-10">
+        <p class="font-mono text-xs uppercase tracking-widest text-rust">Served 7:30am–11:30am</p>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
+            <h3 class="font-display text-xl font-bold text-ink">Bap / Wrap / Baguette</h3>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li class="flex justify-between gap-4"><span>Sausage, Veggie Sausage, Bacon or Egg</span><span class="font-mono text-rust shrink-0">£5.00</span></li>
+              <li class="flex justify-between gap-4"><span>Sausage & Bacon</span><span class="font-mono text-rust shrink-0">£5.50</span></li>
+              <li class="flex justify-between gap-4"><span>Sausage, Bacon & Egg</span><span class="font-mono text-rust shrink-0">£6.00</span></li>
+              <li class="text-ink/55 text-xs pt-1">Add hash brown or extra item — 50p each</li>
+            </ul>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
+            <h3 class="font-display text-xl font-bold text-ink">Breakfast Box</h3>
+            <p class="mt-2 text-xs text-ink/55">Sausage/Veggie Sausage, Bacon, Egg, Hash Brown, Beans, Mushrooms & Toast</p>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li class="flex justify-between gap-4"><span>Regular</span><span class="font-mono text-rust shrink-0">£7.95</span></li>
+              <li class="flex justify-between gap-4"><span>Large</span><span class="font-mono text-rust shrink-0">£10.00</span></li>
+              <li class="text-ink/55 text-xs pt-1">Add extras — 50p each</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Pastries</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex justify-between"><span>Croissant</span><span class="font-mono text-rust">£2.00</span></li>
+              <li class="flex justify-between"><span>Pain aux Raisin</span><span class="font-mono text-rust">£2.50</span></li>
+              <li class="flex justify-between"><span>Pain au Chocolat</span><span class="font-mono text-rust">£2.50</span></li>
+            </ul>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Granola & Yoghurt</h3>
+            <p class="mt-3 text-sm">Granola & Greek Yoghurt Bowl with Fresh Fruit</p>
+            <p class="mt-2 font-mono text-rust">£6.00</p>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Hot Drinks</h3>
+            <p class="font-mono text-xs text-rust">£3.50 each</p>
+            <p class="mt-2 text-xs leading-relaxed text-ink/65">Latte, Cappuccino, Latte Macchiato, Mochaccino, Espresso, Americano, Hot Chocolate</p>
+            <p class="mt-2 text-sm">Tea — <span class="font-mono text-rust">£3.00</span></p>
+            <p class="mt-1 text-xs text-ink/55">Add a syrup — 50p</p>
+          </article>
+        </div>
+
+        <div class="rounded-sm bg-rust p-6 text-center text-cream md:p-8">
+          <p class="font-display text-2xl font-bold">Any Hot Drink & a Pastry — £5.00</p>
+        </div>
+
+        <details class="rounded-sm border border-ink/10 p-4 text-sm text-ink/50">
+          <summary class="cursor-pointer font-medium text-ink/70">View menu board image (reference only)</summary>
+          <Image src={menu1} alt="Breakfast menu board" width={800} loading="lazy" class="mt-4 w-full rounded-sm" />
+        </details>
+      </div>
+
+      <!-- LUNCH -->
+      <div id="menu-lunch" class="menu-panel mt-10 space-y-10">
+        <p class="font-mono text-xs uppercase tracking-widest text-rust">Served 11:30am–2:30pm</p>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
+            <h3 class="font-display text-xl font-bold text-ink">Baguettes or Wraps</h3>
+            <p class="mt-3 text-sm font-semibold">Cold Fillings <span class="font-mono text-rust">£5.85</span></p>
+            <p class="mt-1 text-xs text-ink/60">Egg Mayo, Tuna Mayo, Cheese & Red Onion, Ham & Cheese, Coronation Chicken, Chicken Tikka</p>
+            <p class="mt-4 text-sm font-semibold">Hot Fillings <span class="font-mono text-rust">£6.85</span></p>
+            <p class="mt-1 text-xs text-ink/60">BBQ Chicken, Cajun Chicken, Chinese Chicken, Pesto Chicken, BBQ Pulled Pork, Beef Chilli</p>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 bg-stone/50 p-6">
+            <h3 class="font-display text-xl font-bold text-ink">Jacket Potatoes</h3>
+            <ul class="mt-4 space-y-2 text-sm">
+              <li class="flex justify-between"><span>Plain</span><span class="font-mono text-rust">£5.50</span></li>
+              <li class="flex justify-between"><span>Cheese</span><span class="font-mono text-rust">£6.00</span></li>
+              <li class="flex justify-between"><span>Cheese & Beans</span><span class="font-mono text-rust">£6.50</span></li>
+              <li class="flex justify-between"><span>Any Cold Filling</span><span class="font-mono text-rust">£6.50</span></li>
+              <li class="flex justify-between"><span>Any Hot Filling</span><span class="font-mono text-rust">£7.50</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Rice Bowl</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex justify-between"><span>1 meat</span><span class="font-mono text-rust">£8.25</span></li>
+              <li class="flex justify-between"><span>2 meat</span><span class="font-mono text-rust">£10.25</span></li>
+              <li class="flex justify-between"><span>3 meat</span><span class="font-mono text-rust">£12.00</span></li>
+            </ul>
+            <p class="mt-2 text-xs text-ink/55">Choose any hot/cold filling, add salad + sauce</p>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Hot Pasta Pots</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex justify-between"><span>Chicken Pesto Pasta</span><span class="font-mono text-rust">£8.00</span></li>
+              <li class="flex justify-between"><span>Chicken Arrabbiata Pasta</span><span class="font-mono text-rust">£8.00</span></li>
+              <li class="flex justify-between"><span>Vegetarian option available</span><span class="font-mono text-rust">£6.00</span></li>
+            </ul>
+            <p class="mt-2 text-xs text-ink/55">Optional Parmesan</p>
+          </article>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Sweet Jacket Potato Box</h3>
+            <p class="text-xs text-ink/55">All served with couscous, coleslaw & salad</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex justify-between"><span>No Meat</span><span class="font-mono text-rust">£7.00</span></li>
+              <li class="flex justify-between"><span>1 Meat</span><span class="font-mono text-rust">£8.50</span></li>
+              <li class="flex justify-between"><span>2 Meat</span><span class="font-mono text-rust">£10.50</span></li>
+              <li class="flex justify-between"><span>3 Meat</span><span class="font-mono text-rust">£12.50</span></li>
+            </ul>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Pizza Slice</h3>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex justify-between"><span>Margherita</span><span class="font-mono text-rust">£3.50</span></li>
+              <li class="flex justify-between"><span>Pepperoni</span><span class="font-mono text-rust">£4.00</span></li>
+              <li class="flex justify-between"><span>BBQ Chicken</span><span class="font-mono text-rust">£4.50</span></li>
+            </ul>
+            <p class="mt-2 text-xs text-ink/55">Add optional extras</p>
+          </article>
+
+          <article class="rounded-sm border border-ink/8 p-6">
+            <h3 class="font-display text-lg font-bold text-ink">Salad Box</h3>
+            <p class="text-xs text-ink/55">All served with couscous, coleslaw & salad</p>
+            <ul class="mt-3 space-y-2 text-sm">
+              <li class="flex justify-between"><span>No Meat</span><span class="font-mono text-rust">£5.50</span></li>
+              <li class="flex justify-between"><span>1 Meat</span><span class="font-mono text-rust">£7.00</span></li>
+              <li class="flex justify-between"><span>2 Meat</span><span class="font-mono text-rust">£9.00</span></li>
+              <li class="flex justify-between"><span>3 Meat</span><span class="font-mono text-rust">£11.00</span></li>
+            </ul>
+          </article>
+        </div>
+
+        <details class="rounded-sm border border-ink/10 p-4 text-sm text-ink/50">
+          <summary class="cursor-pointer font-medium text-ink/70">View menu board image (reference only)</summary>
+          <Image src={menu2} alt="Lunch menu board" width={800} loading="lazy" class="mt-4 w-full rounded-sm" />
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section id="gallery" class="section-reveal bg-ink px-5 py-24 md:px-10 md:py-32">
+    <div class="mx-auto max-w-[1400px]">
+      <p class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-rust">Fresh from the counter</p>
+      <h2 class="font-display text-[clamp(2.25rem,5vw,4rem)] font-bold text-cream">Gallery</h2>
+
+      <div class="gallery-masonry mt-12">
+        {
+          galleryItems.map((item, i) => (
+            <button
+              type="button"
+              class="gallery-item gallery-trigger group relative w-full overflow-hidden rounded-sm border border-cream/10"
+              data-index={i}
+            >
+              <Image
+                src={item.src}
+                alt={item.alt}
+                width={600}
+                loading="lazy"
+                class="w-full object-cover transition duration-500 group-hover:scale-105"
+              />
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image preview">
+    <button id="lightbox-close" type="button" class="absolute top-6 right-6 text-3xl text-cream/80 hover:text-cream" aria-label="Close">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- STATS -->
+  <div class="grid grid-cols-2 border-y border-ink/8 bg-stone md:grid-cols-4">
+    {
+      stats.map((s) => (
+        <div
+          class="stat-counter border-ink/8 px-6 py-12 text-center md:border-r last:md:border-r-0 even:border-l md:even:border-l-0"
+          data-target={String(s.target)}
+          data-decimals={String(s.decimals)}
+          data-display={s.display ?? ''}
+        >
+          <div class="font-display text-[clamp(2.5rem,5vw,3.5rem)] font-bold leading-none text-ink">
+            <span class="count-num">0</span>
+            {s.suffix && <span class="text-rust">{s.suffix}</span>}
+          </div>
+          <p class="mt-3 font-mono text-[10px] uppercase tracking-[0.16em] text-ink/50">{s.label}</p>
+        </div>
+      ))
+    }
+  </div>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="section-reveal bg-cream px-5 py-24 md:px-10 md:py-32">
+    <div class="mx-auto max-w-[1400px]">
+      <p class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-rust">What people say</p>
+      <h2 class="font-display text-[clamp(2.25rem,5vw,4rem)] font-bold text-ink">Reviews</h2>
+      <div class="mt-4 flex flex-wrap items-center gap-3">
+        <span class="text-rust text-lg">★★★★★</span>
+        <span class="font-mono text-xs text-ink/50">5.0 · 9 Reviews on Google</span>
+      </div>
+
+      <div class="mt-12 grid gap-4 md:grid-cols-2">
+        {
+          reviews.map((r) => (
+            <article class="reveal-card rounded-sm border border-ink/8 bg-stone/40 p-7">
+              <div class="mb-4 text-rust">★★★★★</div>
+              <p class="text-sm leading-relaxed text-ink/75">"{r.text}"</p>
+              {r.meta && <p class="mt-3 text-xs text-ink/45">{r.meta}</p>}
+              <p class="mt-5 font-mono text-[10px] uppercase tracking-widest text-rust">— {r.name}</p>
+            </article>
+          ))
+        }
+      </div>
+
+      <div class="mt-10">
+        <a
+          href="https://share.google/QBTmlZb7GlxEQGsx0"
+          target="_blank"
+          rel="noopener noreferrer"
+          data-magnetic
+          data-hover
+          class="inline-block rounded-sm border border-rust px-6 py-3 text-sm font-semibold uppercase tracking-wider text-rust transition hover:bg-rust hover:text-cream"
+        >
+          See all reviews on Google
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIND US -->
+  <section id="find-us" class="section-reveal bg-ink px-5 py-24 md:px-10 md:py-32">
+    <div class="mx-auto grid max-w-[1400px] gap-12 lg:grid-cols-2">
+      <div>
+        <p class="mb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-rust">Grab & go</p>
+        <h2 class="font-display text-[clamp(2.25rem,5vw,3.5rem)] font-bold text-cream">Find Us</h2>
+
+        <div class="mt-8 space-y-4 text-cream/75">
+          <p class="text-sm leading-relaxed">
+            <strong class="text-cream">Jaggerz Takeaway</strong><br />
+            16 Picton Terrace<br />
+            Narberth, Pembrokeshire<br />
+            SA67 7AW
+          </p>
+          <p>
+            <a href="tel:07904709325" data-hover class="text-xl font-semibold text-rust hover:text-cream transition">07904 709325</a>
+          </p>
+          <div class="flex gap-4 pt-2">
+            <a href="https://www.instagram.com/jaggerz.narberth/" target="_blank" rel="noopener noreferrer" data-hover aria-label="Instagram" class="text-2xl text-cream/70 hover:text-rust transition">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://www.facebook.com/people/Jaggerz/61580776627816/" target="_blank" rel="noopener noreferrer" data-hover aria-label="Facebook" class="text-2xl text-cream/70 hover:text-rust transition">
+              <i class="fa-brands fa-facebook"></i>
+            </a>
+          </div>
+        </div>
+
+        <table class="mt-10 w-full max-w-sm text-left text-sm">
+          <caption class="mb-3 text-left font-mono text-[10px] uppercase tracking-[0.16em] text-rust">Opening Hours</caption>
+          <tbody class="font-mono text-cream/80">
+            <tr class="border-b border-cream/10"><td class="py-3 pr-4">Mon–Fri</td><td class="py-3 text-rust">7:30am–2:30pm</td></tr>
+            <tr class="border-b border-cream/10"><td class="py-3 pr-4">Sat</td><td class="py-3 text-rust">8:00am–4:00pm</td></tr>
+            <tr><td class="py-3 pr-4">Sun</td><td class="py-3 text-cream/40">Closed</td></tr>
+          </tbody>
+        </table>
+
+        <div class="mt-10 overflow-hidden rounded-sm border border-cream/10">
+          <iframe
+            title="Jaggerz Takeaway on Google Maps"
+            src="https://maps.google.com/maps?q=16+Picton+Terrace+Narberth+SA67+7AW&output=embed"
+            width="100%"
+            height="280"
+            style="border:0;"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+
+      <div class="flex flex-col justify-center">
+        <div class="flex flex-col gap-4 sm:flex-row">
+          <a
+            href="tel:07904709325"
+            data-magnetic
+            data-hover
+            class="flex min-h-14 flex-1 items-center justify-center gap-3 rounded-sm bg-rust px-8 py-5 text-base font-semibold uppercase tracking-wider text-cream transition hover:bg-rust/90"
+          >
+            <i class="fa-solid fa-phone" aria-hidden="true"></i>
+            Call Now
+          </a>
+          <a
+            href="https://www.google.com/maps/dir/?api=1&destination=16+Picton+Terrace,+Narberth,+Pembrokeshire,+SA67+7AW"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-magnetic
+            data-hover
+            class="flex min-h-14 flex-1 items-center justify-center gap-3 rounded-sm border-2 border-cream px-8 py-5 text-base font-semibold uppercase tracking-wider text-cream transition hover:bg-cream/10"
+          >
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            Get Directions
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-cream/10 bg-ink px-5 py-12 md:px-10">
+    <div class="mx-auto flex max-w-[1400px] flex-col gap-8 md:flex-row md:items-start md:justify-between">
+      <div>
+        <Image src={logo1} alt="Jaggerz Takeaway" width={140} height={56} class="h-12 w-auto opacity-90" />
+        <p class="mt-4 max-w-xs text-xs leading-relaxed text-cream/45">
+          16 Picton Terrace, Narberth, Pembrokeshire, SA67 7AW
+        </p>
+        <div class="mt-4 flex gap-4">
+          <a href="https://www.instagram.com/jaggerz.narberth/" target="_blank" rel="noopener noreferrer" data-hover class="text-cream/50 hover:text-rust"><i class="fa-brands fa-instagram"></i></a>
+          <a href="https://www.facebook.com/people/Jaggerz/61580776627816/" target="_blank" rel="noopener noreferrer" data-hover class="text-cream/50 hover:text-rust"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
+        <a href="#menu" class="text-[10px] uppercase tracking-widest text-cream/35 hover:text-cream">Menu</a>
+        <a href="#gallery" class="text-[10px] uppercase tracking-widest text-cream/35 hover:text-cream">Gallery</a>
+        <a href="#reviews" class="text-[10px] uppercase tracking-widest text-cream/35 hover:text-cream">Reviews</a>
+        <a href="#find-us" class="text-[10px] uppercase tracking-widest text-cream/35 hover:text-cream">Find Us</a>
+        <a href="tel:07904709325" class="text-[10px] uppercase tracking-widest text-cream/35 hover:text-cream">Call</a>
+      </div>
+    </div>
+
+    <div class="mx-auto mt-10 flex max-w-[1400px] flex-col items-start justify-between gap-2 border-t border-cream/10 pt-6 text-[10px] text-cream/30 md:flex-row md:items-center">
+      <p>© {currentYear} Jaggerz Takeaway</p>
+      <p class="md:text-right">Site by Quantweb</p>
+    </div>
+  </footer>
+
+</Layout>
+
+<script>
+  const promoMessages = [
+    'Any Hot Drink & a Pastry — £5',
+    'Fresh couscous bowls & jacket potatoes',
+    'Order ahead — call 07904 709325',
+  ];
+  let promoIndex = 0;
+  const promoEl = document.getElementById('promo-message');
+  const hoursTodayEl = document.getElementById('hours-today');
+
+  const hoursMap: Record<number, string> = {
+    0: 'Closed today',
+    1: 'Open today 7:30am–2:30pm',
+    2: 'Open today 7:30am–2:30pm',
+    3: 'Open today 7:30am–2:30pm',
+    4: 'Open today 7:30am–2:30pm',
+    5: 'Open today 7:30am–2:30pm',
+    6: 'Open today 8:00am–4:00pm',
+  };
+
+  if (hoursTodayEl) {
+    hoursTodayEl.textContent = hoursMap[new Date().getDay()];
+  }
+
+  setInterval(() => {
+    promoIndex = (promoIndex + 1) % promoMessages.length;
+    if (promoEl) {
+      promoEl.innerHTML =
+        promoIndex === 0
+          ? 'Any Hot Drink & a Pastry — <span class="text-rust font-semibold">£5</span>'
+          : promoMessages[promoIndex];
+    }
+  }, 4500);
+
+  const nav = document.getElementById('site-nav');
+  window.addEventListener('scroll', () => {
+    if (!nav) return;
+    nav.classList.toggle('nav-scrolled', window.scrollY > 40);
+  });
+
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  function toggleMobileMenu() {
+    if (!mobileMenu) return;
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+  }
+
+  hamburger?.addEventListener('click', toggleMobileMenu);
+  document.querySelectorAll('.mobile-link').forEach((link) => {
+    link.addEventListener('click', () => {
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+    });
+  });
+
+  function setMenuTab(tab: 'breakfast' | 'lunch') {
+    document.querySelectorAll('.menu-tab').forEach((btn) => {
+      const isActive = btn.getAttribute('data-menu-tab') === tab;
+      btn.classList.toggle('active', isActive);
+      btn.classList.toggle('text-rust', isActive);
+      btn.classList.toggle('border-rust', isActive);
+      btn.classList.toggle('text-ink/50', !isActive);
+    });
+    document.querySelectorAll('.menu-panel').forEach((panel) => {
+      panel.classList.toggle('active', panel.id === `menu-${tab}`);
+    });
+  }
+
+  document.querySelectorAll('[data-menu-tab]').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const tab = btn.getAttribute('data-menu-tab') as 'breakfast' | 'lunch';
+      setMenuTab(tab);
+    });
+  });
+
+  document.querySelectorAll('.menu-nav-tab').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      setMenuTab('breakfast');
+      document.getElementById('menu')?.scrollIntoView({ behavior: 'smooth' });
+      mobileMenu?.classList.add('hidden');
+      mobileMenu?.classList.remove('flex');
+    });
+  });
+
+  if (window.location.hash === '#breakfast') setMenuTab('breakfast');
+
+  const galleryUrls: string[] = [];
+  document.querySelectorAll<HTMLButtonElement>('.gallery-trigger img').forEach((img) => {
+    galleryUrls.push(img.currentSrc || img.src);
+  });
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+
+  document.querySelectorAll('.gallery-trigger').forEach((btn, i) => {
+    btn.addEventListener('click', () => {
+      if (!lightbox || !lightboxImg) return;
+      lightboxImg.src = galleryUrls[i] ?? '';
+      lightboxImg.alt = btn.querySelector('img')?.alt ?? '';
+      lightbox.classList.add('open');
+    });
+  });
+
+  document.getElementById('lightbox-close')?.addEventListener('click', () => {
+    lightbox?.classList.remove('open');
+  });
+
+  lightbox?.addEventListener('click', (e) => {
+    if (e.target === lightbox) lightbox.classList.remove('open');
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') lightbox?.classList.remove('open');
+  });
+
+  const statObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const item = entry.target as HTMLElement;
+        if (item.dataset.counted === 'true') return;
+        item.dataset.counted = 'true';
+
+        const target = parseFloat(item.getAttribute('data-target') || '0');
+        const decimals = parseInt(item.getAttribute('data-decimals') || '0', 10);
+        const display = item.getAttribute('data-display');
+        const numEl = item.querySelector('.count-num');
+        if (!numEl) return;
+
+        if (display) {
+          numEl.textContent = display;
+          return;
+        }
+
+        let current = 0;
+        const step = target / 60;
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          numEl.textContent = decimals > 0 ? current.toFixed(decimals) : String(Math.round(current));
+        }, 30);
+      });
+    },
+    { threshold: 0.4 }
+  );
+
+  document.querySelectorAll('.stat-counter').forEach((el) => statObserver.observe(el));
+</script>
+
+<script type="module">
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import * as THREE from 'three';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const lenis = window.__lenis;
+  if (lenis) {
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => lenis.raf(time * 1000));
+    gsap.ticker.lagSmoothing(0);
+  }
+
+  gsap.set('#hero-logo', { opacity: 0, y: 20 });
+  gsap.set('#hero-headline', { opacity: 0, y: 40 });
+  gsap.set('#hero-sub', { opacity: 0, y: 24 });
+  gsap.set('#hero-cta', { opacity: 0, y: 20 });
+  gsap.set('#hero-image', { opacity: 0, scale: 0.92 });
+
+  const heroTl = gsap.timeline({ delay: 0.15 });
+  heroTl
+    .to('#hero-logo', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+    .to('#hero-headline', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.45')
+    .to('#hero-sub', { opacity: 1, y: 0, duration: 0.7, ease: 'power2.out' }, '-=0.5')
+    .to('#hero-cta', { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, '-=0.45')
+    .to('#hero-image', { opacity: 1, scale: 1, duration: 1, ease: 'power3.out' }, '-=0.65');
+
+  gsap.utils.toArray<HTMLElement>('.section-reveal').forEach((section) => {
+    gsap.fromTo(
+      section,
+      { y: 50, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.9,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 88%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+
+  gsap.utils.toArray<HTMLElement>('.reveal-card').forEach((card, i) => {
+    gsap.fromTo(
+      card,
+      { y: 36, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        delay: i * 0.08,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: card,
+          start: 'top 92%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+
+  gsap.utils.toArray<HTMLElement>('.gallery-item').forEach((item, i) => {
+    gsap.fromTo(
+      item,
+      { y: 40, opacity: 0 },
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.75,
+        delay: (i % 3) * 0.1,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: item,
+          start: 'top 92%',
+          toggleActions: 'play none none none',
+        },
+      }
+    );
+  });
+
+  gsap.utils.toArray<HTMLElement>('.signature-callout').forEach((el, i) => {
+    gsap.to(el, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      delay: i * 0.12,
+      ease: 'power2.out',
+      scrollTrigger: {
+        trigger: '#signature',
+        start: 'top 70%',
+        toggleActions: 'play none none none',
+      },
+    });
+  });
+
+  const canvas = document.getElementById('hero-canvas') as HTMLCanvasElement | null;
+  if (canvas) {
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.z = 4;
+
+    const geometry = new THREE.IcosahedronGeometry(1.2, 1);
+    const material = new THREE.MeshBasicMaterial({
+      color: 0xc5622b,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.18,
+    });
+    const mesh = new THREE.Mesh(geometry, material);
+    mesh.position.set(1.5, 0.2, 0);
+    scene.add(mesh);
+
+    const resize = () => {
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      const w = parent.clientWidth;
+      const h = parent.clientHeight;
+      renderer.setSize(w, h, false);
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+    };
+
+    resize();
+    window.addEventListener('resize', resize);
+
+    const animate = () => {
+      mesh.rotation.x += 0.002;
+      mesh.rotation.y += 0.003;
+      renderer.render(scene, camera);
+      requestAnimationFrame(animate);
+    };
+    animate();
+  }
+</script>
+
+<style>
+  #site-nav {
+    background: transparent;
+  }
+
+  #site-nav.nav-scrolled {
+    background: #121212;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  }
+
+  #site-nav:not(.nav-scrolled) .nav-inner {
+    background: rgba(18, 18, 18, 0.85);
+    backdrop-filter: blur(16px);
+  }
+
+  #site-nav.nav-scrolled .nav-inner {
+    background: transparent;
+  }
+
+  @media (max-width: 767px) {
+    #nav-desktop {
+      display: none !important;
+    }
+  }
+</style>

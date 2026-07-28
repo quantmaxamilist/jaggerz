@@ -1,0 +1,172 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+}
+
+const {
+  title = 'Jaggerz Takeaway | Fresh Food & Coffee in Narberth, Pembrokeshire',
+  description = 'Grab-and-go breakfast rolls, homemade couscous bowls, jacket potatoes, pizza slices and hot drinks. Order fresh at Jaggerz Takeaway, 16 Picton Terrace, Narberth.',
+  ogImage = '/og-food1.jpg',
+} = Astro.props;
+
+const siteUrl = 'https://jaggerztakeaway.co.uk';
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+
+const schemaLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: 'Jaggerz Takeaway',
+  description:
+    'Takeaway and deli in Narberth serving couscous bowls, jacket potatoes, pizza slices, breakfast rolls and hot drinks.',
+  telephone: '+447904709325',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '16 Picton Terrace',
+    addressLocality: 'Narberth',
+    addressRegion: 'Pembrokeshire',
+    postalCode: 'SA67 7AW',
+    addressCountry: 'GB',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 51.799,
+    longitude: -4.744,
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '07:30',
+      closes: '14:30',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: 'Saturday',
+      opens: '08:00',
+      closes: '16:00',
+    },
+  ],
+  priceRange: '£',
+  sameAs: [
+    'https://www.instagram.com/jaggerz.narberth/',
+    'https://www.facebook.com/people/Jaggerz/61580776627816/',
+  ],
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: '5.0',
+    reviewCount: '9',
+  },
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href={siteUrl} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={fullOgImage} />
+    <meta property="og:locale" content="en_GB" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={fullOgImage} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,900&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZZ+ROSLYYUHAIFg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(schemaLd)} />
+  </head>
+  <body>
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <slot />
+
+    <script>
+      const dot = document.getElementById('cursor-dot');
+      const ring = document.getElementById('cursor-ring');
+      let mx = 0;
+      let my = 0;
+      let rx = 0;
+      let ry = 0;
+
+      const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+      document.addEventListener('mousemove', (e) => {
+        mx = e.clientX;
+        my = e.clientY;
+      });
+
+      const bindHover = () => {
+        document.querySelectorAll('a, button, [data-hover], [data-magnetic]').forEach((el) => {
+          el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+          el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+        });
+      };
+
+      bindHover();
+      document.addEventListener('astro:page-load', bindHover);
+
+      document.querySelectorAll('[data-magnetic]').forEach((el) => {
+        const node = el as HTMLElement;
+        node.addEventListener('mousemove', (e) => {
+          const rect = node.getBoundingClientRect();
+          const x = (e as MouseEvent).clientX - rect.left - rect.width / 2;
+          const y = (e as MouseEvent).clientY - rect.top - rect.height / 2;
+          node.style.transform = `translate(${x * 0.22}px, ${y * 0.22}px)`;
+        });
+        node.addEventListener('mouseleave', () => {
+          node.style.transform = '';
+        });
+      });
+
+      const tick = () => {
+        if (dot) {
+          dot.style.left = `${mx}px`;
+          dot.style.top = `${my}px`;
+        }
+        rx = lerp(rx, mx, 0.12);
+        ry = lerp(ry, my, 0.12);
+        if (ring) {
+          ring.style.left = `${rx}px`;
+          ring.style.top = `${ry}px`;
+        }
+        requestAnimationFrame(tick);
+      };
+      tick();
+    </script>
+
+    <script type="module">
+      import Lenis from '@studio-freight/lenis';
+
+      window.__lenis = new Lenis({
+        lerp: 0.08,
+        smoothWheel: true,
+        syncTouch: true,
+      });
+    </script>
+  </body>
+</html>
